@@ -12,10 +12,10 @@ documentaire »). Le protocole de mise à jour, lui, est capitalisé ici.
 
 | Fichier | Rôle |
 | --- | --- |
-| `modeles.json` | Le jeu de données complet (écrasé à chaque vérification) |
-| `protocole/consigne.txt` | Consigne LLM canonique, utilisée telle quelle par l'automation |
-| `protocole/mise-a-jour.md` | Règles de mise à jour, cadence, échéances |
-| `scripts/sync.mjs` | Automation : appel LLM → validation → écriture → résumé |
+| `modeles.json` | Le jeu de données complet (rapproché à chaque passage) |
+| `protocole/consigne.txt` | Consigne LLM canonique de l'automation (réconciliation mono-tour, sans web) |
+| `protocole/mise-a-jour.md` | Règles, deux chemins de mise à jour, cadence, échéances |
+| `scripts/sync.mjs` | Automation : fetch API OpenRouter → réconciliation LLM → validation → écriture → résumé |
 | `scripts/validate.mjs` | Validation de schéma (CLI ou import) |
 | `.github/workflows/data-sync.yml` | Cron quotidien + déclenchement manuel |
 
@@ -37,7 +37,8 @@ n'est nécessaire quand les données changent.
 1. Créer le repo `synergetik-ai/data-routeo` sur GitHub et pousser ce contenu.
 2. **Secret** : `LLM_API_KEY` — clé API du fournisseur (OpenRouter ou
    équivalent). *Settings → Secrets and variables → Actions → Secrets.*
-3. **Variables** : `LLM_MODEL` (ex. `openai/gpt-5.6-luna`) et
+3. **Variables** : `LLM_MODEL` (modèle de réconciliation — actuellement
+   `z-ai/glm-5.3-flash`, modifiable sans toucher au code) et
    `LLM_BASE_URL` (optionnel, défaut `https://openrouter.ai/api/v1`).
    *Settings → Secrets and variables → Actions → Variables.*
 4. Vérifier que l'onglet **Actions** est actif sur le repo.
@@ -49,25 +50,39 @@ n'est nécessaire quand les données changent.
 Quotidien à 06h00 UTC :
 
 1. lecture de `modeles.json` + `protocole/consigne.txt` ;
-2. appel LLM (température 0,1) avec le jeu de données courant ;
-3. extraction du JSON de la réponse, puis validation stricte
-   (`scripts/validate.mjs`) : structure, valeurs autorisées, prix
-   numériques, champs verrouillés inchangés, aucun modèle supprimé,
-   entrée de changelog présente et datée du jour ;
-4. en cas d'échec : **aucune écriture**, le run échoue et affiche les
+2. **fetch de l'API publique OpenRouter** (`/api/v1/models`) et
+   extraction de l'extrait machine des slugs du jeu courant (tarifs en
+   USD par token, contextes) — le modèle LLM n'a pas d'accès web, on
+   lui fournit les données source ;
+3. appel LLM (température 0,1) en **mono-tour** : consigne + jeu
+   courant + extrait machine, le modèle réconcilie et renvoie
+   uniquement le JSON ;
+4. validation stricte (`scripts/validate.mjs`) : structure, valeurs
+   autorisées, prix numériques, champs verrouillés inchangés, aucun
+   modèle supprimé, entrée de changelog présente et datée du jour ;
+   gardes anti-hallucination (variation individuelle de prix ≥ ×5 ou
+   ≤ ÷5, plus de 25 % des prix modifiés en un passage → avertissements
+   en tête de résumé) ;
+5. en cas d'échec : **aucune écriture**, le run échoue et affiche les
    erreurs dans son résumé ;
-5. en cas de succès : `modeles.json` réécrit, écarts listés dans le
-   résumé du run, commit + push si le fichier a changé.
+6. en cas de succès : `modeles.json` réécrit, écarts et modèles sans
+   correspondance listés dans le résumé du run, commit + push si le
+   fichier a changé.
 
 Le résumé de chaque run est la piste d'audit : il liste les écarts
 (modèle, champ, ancienne valeur, nouvelle valeur).
 
-## Mise à jour manuelle (secours)
+## Passe éditoriale (hebdomadaire conseillée)
+
+Le rapprochement machine couvre les prix et les contextes, pas les
+nuances : statuts promo, notes, licences, modèles absents d'OpenRouter
+(les Mistral du catalogue, par exemple). Périodiquement :
 
 1. Ouvrir Routéo → panneau « Mettre à jour les données » → **Copier la
    consigne et les données**.
 2. Coller dans une conversation avec un agent qui a accès au web. Il
-   renvoie le JSON complet et la liste des écarts.
+   vérifie réellement les pages des éditeurs, renvoie le JSON complet
+   et la liste des écarts.
 3. Contrôler les écarts, puis mettre à jour `modeles.json` via une PR
    (la validation s'exécute localement avec
    `node scripts/validate.mjs modeles.json <ancien-modeles.json>` ou se

@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   sync:
-    name: Verification LLM et regeneration
+    name: Rapprochement des donnees
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Verification LLM, validation et ecriture
+      - name: Rapprochement, validation et ecriture
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
