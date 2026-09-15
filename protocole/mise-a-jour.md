@@ -3,19 +3,29 @@
 Données de suivi tarifaire des modèles LLM consommées par Routéo
 (`products/routeo/` dans le repo `agent-factory-os`).
 
-Le fichier de données est `modeles.json`, à la racine. Il est régénéré
-quotidiennement par le workflow `.github/workflows/data-sync.yml` et peut
-être mis à jour manuellement selon la procédure ci-dessous.
+Le fichier de données est `modeles.json`, à la racine. Il est rapproché
+quotidiennement des données machine d'OpenRouter par le workflow
+`.github/workflows/data-sync.yml`, et peut être mis à jour manuellement
+selon la procédure ci-dessous.
 
 ---
 
-## La consigne LLM
+## Deux chemins, deux consignes
 
-La consigne envoyée au modèle de vérification est canonique dans
-[`consigne.txt`](consigne.txt). Le script d'automation
-(`scripts/sync.mjs`) l'utilise telle quelle, suffixée par le jeu de
-données courant. Toute modification de la consigne se fait dans
-`consigne.txt` uniquement.
+L'automatisation et la passe manuelle n'opèrent pas dans les mêmes
+conditions, et leurs consignes sont donc distinctes :
+
+| Chemin | Accès web | Consigne | Source de vérité |
+| --- | --- | --- | --- |
+| **Automation** (workflow quotidien) | Non — appel API brut | [`consigne.txt`](consigne.txt) : réconciliation avec l'extrait machine de l'API publique OpenRouter (`/api/v1/models`), fourni par `scripts/sync.mjs` | Tarifs et contextes OpenRouter |
+| **Manuel** (passe de fond, hebdomadaire conseillée) | Oui — agent avec navigation | Prompt intégré au panneau « Mettre à jour les données » de l'application | Pages tarifaires des éditeurs + recoupement OpenRouter |
+
+> Leçon du 2026-09-15 : un appel `chat/completions` n'a **aucun accès
+> web**. La première version de l'automation demandait au modèle de
+> « vérifier sur les pages des éditeurs » — il a correctement refusé
+> plutôt que d'inventer. L'automation fournit désormais les données
+> machine au modèle ; la vérification éditoriale (pages des éditeurs,
+> nuances promo/palier/notes) reste une passe humaine périodique.
 
 ## Règles de mise à jour (issues de `meta.schema`)
 
@@ -24,8 +34,6 @@ données courant. Toute modification de la consigne se fait dans
   `cas_usage[].melange_sortie` sans citer une source benchmark ou juridique
   datée dans le changelog. La validation automatisée refuse tout écart sur
   un champ verrouillé.
-- Vérifier chaque prix sur la page listée dans `meta.sources_editeurs`,
-  puis recouper avec `openrouter.ai/models`.
 - Un modèle retiré passe en statut `retire`, il n'est jamais supprimé de
   la liste. La validation refuse la disparition d'une entrée.
 - Un tarif promotionnel prend le statut `promo`, sa date de fin va dans
@@ -37,12 +45,18 @@ données courant. Toute modification de la consigne se fait dans
 - Les champs de dimensionnement (`params_*`, `classe_materiel`,
   `empreinte`) ne se modifient que sur la foi du model card de l'éditeur
   ou d'un guide de déploiement daté.
+- Garde-fous de la validation : variation individuelle de prix ≥ ×5 ou
+  ≤ ÷5 → avertissement en tête de résumé ; plus de 25 % des prix modifiés
+  en un passage → avertissement (symptôme possible d'invention). Ces
+  passages méritent une relecture avant d'être considérés comme fiables.
 
 ## Cadence
 
-Automatique, quotidienne (cron 06h00 UTC dans `data-sync.yml`).
-Déclenchement manuel possible : onglet **Actions** → **Mise a jour des
-donnees** → **Run workflow**.
+- **Rapprochement machine** : automatique, quotidien (cron 06h00 UTC).
+  Déclenchement manuel : onglet **Actions** → **Mise a jour des donnees**
+  → **Run workflow**.
+- **Passe éditoriale** (pages des éditeurs, notes, statuts promo) :
+  hebdomadaire conseillée, via le panneau de l'application.
 
 ## Échéances déjà connues (au 2026-09-15)
 
