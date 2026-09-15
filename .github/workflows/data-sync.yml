@@ -1,0 +1,46 @@
+name: Mise a jour des donnees
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # quotidien, 06h00 UTC (08h00 Paris en heure d'ete)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Verification LLM et regeneration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verification LLM, validation et ecriture
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+        run: node scripts/sync.mjs
+
+      - name: Commit et push
+        run: |
+          if git diff --quiet modeles.json; then
+            echo "Aucun changement de donnees — rien a committer."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modeles.json
+          git commit -m "Mise a jour des donnees - $(date -u +%Y-%m-%d)"
+          git push
