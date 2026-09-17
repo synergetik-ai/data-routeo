@@ -32,6 +32,9 @@ aucune URL n'est codée en dur dans le code de l'application. GitHub raw
 sert le fichier avec les en-têtes CORS, donc aucun rebuild de l'application
 n'est nécessaire quand les données changent.
 
+Application en production : https://routeo.synergetik.ai (canonique) ·
+https://routeo-synergetik.netlify.app.
+
 ## Mise en place (une seule fois)
 
 1. Créer le repo `synergetik-ai/data-routeo` sur GitHub et pousser ce contenu.
