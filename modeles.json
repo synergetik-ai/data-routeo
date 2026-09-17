@@ -903,7 +903,7 @@
       "vitesse": "moyenne",
       "statut": "actif",
       "verifie_le": "2026-09-16",
-      "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ pendant la fenetre de pointe depuis le 16/08/2026. Le mode reflexion genere beaucoup de tokens de sortie factures.",
+      "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ depuis le 16/08/2026. Fenêtre heures creuses entre 12H et 3h (heure été France). Le mode reflexion genere beaucoup de tokens de sortie factures.",
       "scores": {
         "agent-code": 80,
         "code-rapide": 82,
