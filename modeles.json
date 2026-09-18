@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "1.9",
-    "date_verification": "2026-09-18",
+    "version": "2.0",
+    "date_verification": "2026-09-19",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
     "avertissement": "Les scores d adequation sont une notation editoriale 0-100 calibree sur les benchmarks publics cites en bas de page. Ils orientent un premier choix, ils ne remplacent pas un test sur vos propres taches.",
@@ -157,6 +157,12 @@
         "version": "1.9",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 2 modeles mis a jour et horodates au 18/09/2026. Prix revus : Kimi K3 a 3 / 15 $, GLM-5.3 Flash a 0,09 / 0,3 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 23 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, GLM-5.3, Haiku 4.5, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statuts promo et notes de GPT-5.6 Sol et GLM-5.3 Flash a realigner sur les tarifs courants."
+      },
+      {
+        "date": "2026-09-19",
+        "version": "2.0",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 1 modele mis a jour et horodate au 19/09/2026. Prix revus : Kimi K3 a 2,1 / 10,95 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 24 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, GLM-5.3, Haiku 4.5, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, GLM-5.3 Flash, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statuts promo et notes de GPT-5.6 Sol et GLM-5.3 Flash a realigner sur les tarifs courants."
       }
     ]
   },
@@ -421,8 +427,8 @@
       "editeur": "Moonshot",
       "slug": "moonshotai/kimi-k3",
       "palier": "frontiere",
-      "prix_entree": 3,
-      "prix_sortie": 15,
+      "prix_entree": 2.1,
+      "prix_sortie": 10.95,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -434,7 +440,7 @@
       "empreinte": "1,56 To MXFP4, 64 accelerateurs recommandes",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-09-18",
+      "verifie_le": "2026-09-19",
       "note": "Le modele a poids ouverts le plus solide sur les agents a horizon long. Entree en cache a 0,30 $, decisif quand un agent renvoie le meme contexte a chaque tour.",
       "scores": {
         "agent-code": 85,
@@ -903,7 +909,7 @@
       "vitesse": "moyenne",
       "statut": "actif",
       "verifie_le": "2026-09-16",
-      "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ depuis le 16/08/2026. Fenêtre heures creuses entre 12H et 3h (heure été France). Le mode reflexion genere beaucoup de tokens de sortie factures.",
+      "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ depuis le 16/08/2026. Fenetre heures creuses entre 12H et 3h (heure ete France). Le mode reflexion genere beaucoup de tokens de sortie factures.",
       "scores": {
         "agent-code": 80,
         "code-rapide": 82,
