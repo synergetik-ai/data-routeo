@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2.2",
-    "date_verification": "2026-09-21",
+    "version": "2.3",
+    "date_verification": "2026-09-22",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
     "avertissement": "Les scores d adequation sont une notation editoriale 0-100 calibree sur les benchmarks publics cites en bas de page. Ils orientent un premier choix, ils ne remplacent pas un test sur vos propres taches.",
@@ -175,6 +175,12 @@
         "version": "2.2",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 3 modeles mis a jour et horodates au 21/09/2026. Prix revus : GLM-5.3 a 0,896 / 2,816 $, DeepSeek V4 Pro a 0,422298 / 0,844596 $, DeepSeek V4 Flash a 0,0364 / 0,0728 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 22 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, Haiku 4.5, Kimi K3, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, GLM-5.3 Flash, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statuts promo et notes de GPT-5.6 Sol et GLM-5.3 Flash a realigner sur les tarifs courants."
+      },
+      {
+        "date": "2026-09-22",
+        "version": "2.3",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 4 modeles mis a jour et horodates au 22/09/2026. Prix revus : GLM-5.3 a 0,91 / 2,86 $, DeepSeek V4 Pro a 0,95526 / 1,91052 $, DeepSeek V4 Flash a 0,088606 / 0,177212 $, Llama 4 Maverick a 0,2 / 0,8 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 21 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, Haiku 4.5, Kimi K3, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, GLM-5.3 Flash. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statuts promo et notes de GPT-5.6 Sol et GLM-5.3 Flash a realigner sur les tarifs courants."
       }
     ]
   },
@@ -727,8 +733,8 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3",
       "palier": "intermediaire",
-      "prix_entree": 0.896,
-      "prix_sortie": 2.816,
+      "prix_entree": 0.91,
+      "prix_sortie": 2.86,
       "contexte": 1310720,
       "poids_ouverts": true,
       "europe": false,
@@ -740,7 +746,7 @@
       "empreinte": "756 Go FP8, 8x H200",
       "vitesse": "rapide",
       "statut": "actif",
-      "verifie_le": "2026-09-21",
+      "verifie_le": "2026-09-22",
       "note": "Meilleur poids ouverts sur Terminal-Bench 4.0 (41,8 %). Attention, le flagship n est plus sous MIT mais sous licence GLM-5.3 propre a Z.ai, contrairement a la variante Flash restee MIT.",
       "scores": {
         "agent-code": 82,
@@ -907,8 +913,8 @@
       "editeur": "DeepSeek",
       "slug": "deepseek/deepseek-v4-pro",
       "palier": "intermediaire",
-      "prix_entree": 0.422298,
-      "prix_sortie": 0.844596,
+      "prix_entree": 0.95526,
+      "prix_sortie": 1.91052,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -920,7 +926,7 @@
       "empreinte": "893 Go FP8, 3,2 To BF16",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-09-21",
+      "verifie_le": "2026-09-22",
       "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ depuis le 16/08/2026. Fenetre heures creuses entre 12H et 3h (heure ete France). Le mode reflexion genere beaucoup de tokens de sortie factures.",
       "scores": {
         "agent-code": 80,
@@ -1231,8 +1237,8 @@
       "editeur": "DeepSeek",
       "slug": "deepseek/deepseek-v4-flash",
       "palier": "economique",
-      "prix_entree": 0.0364,
-      "prix_sortie": 0.0728,
+      "prix_entree": 0.088606,
+      "prix_sortie": 0.177212,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1244,7 +1250,7 @@
       "empreinte": "167 Go FP8",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-09-21",
+      "verifie_le": "2026-09-22",
       "note": "Prix heure creuse chez DeepSeek, double en heure de pointe. Le routage OpenRouter par defaut descend vers 0,05 $ / 0,16 $ chez des hebergeurs tiers dont la quantification n est pas documentee : a tester avant production.",
       "scores": {
         "agent-code": 62,
@@ -1303,8 +1309,8 @@
       "editeur": "Meta",
       "slug": "meta-llama/llama-4-maverick",
       "palier": "economique",
-      "prix_entree": 0.1875,
-      "prix_sortie": 0.6525,
+      "prix_entree": 0.2,
+      "prix_sortie": 0.8,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1316,7 +1322,7 @@
       "empreinte": "",
       "vitesse": "rapide",
       "statut": "actif",
-      "verifie_le": "2026-09-16",
+      "verifie_le": "2026-09-22",
       "note": "Poids ouverts, hebergeurs multiples, licence bien connue des directions juridiques. Recule nettement face aux poids ouverts chinois sur l agentique.",
       "scores": {
         "agent-code": 48,
