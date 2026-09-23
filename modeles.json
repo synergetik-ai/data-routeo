@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2.4",
-    "date_verification": "2026-09-23",
+    "version": "2.5",
+    "date_verification": "2026-09-24",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
     "avertissement": "Les scores d adequation sont une notation editoriale 0-100 calibree sur les benchmarks publics cites en bas de page. Ils orientent un premier choix, ils ne remplacent pas un test sur vos propres taches.",
@@ -187,6 +187,12 @@
         "version": "2.4",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 5 modeles mis a jour et horodates au 23/09/2026. Prix revus : Kimi K3 a 3 / 15 $, GLM-5.3 a 0,84 / 2,64 $, Kimi K2.7 Code a 0,7062 / 3,3 $ (sortie seule), GLM-5.3 Flash a 0,15 / 0,5 $, Llama 4 Maverick a 0,1875 / 0,6525 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 20 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, Haiku 4.5, Gemini 3.8 Flash, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
+      },
+      {
+        "date": "2026-09-24",
+        "version": "2.5",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, aucun modele mis a jour. Prix et fenetres de contexte confirmes sans changement pour les 25 modeles apparies : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Kimi K3, Kimi K2.7 Code, Grok 4.6, GLM-5.3, GLM-5.3 Flash, Haiku 4.5, Gemini 3.8 Flash, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
       }
     ]
   },
