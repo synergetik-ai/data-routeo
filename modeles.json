@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2.8",
-    "date_verification": "2026-09-27",
+    "version": "2.9",
+    "date_verification": "2026-09-28",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
     "avertissement": "Les scores d adequation sont une notation editoriale 0-100 calibree sur les benchmarks publics cites en bas de page. Ils orientent un premier choix, ils ne remplacent pas un test sur vos propres taches.",
@@ -211,6 +211,12 @@
         "version": "2.8",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 2 modeles mis a jour et horodates au 27/09/2026. Prix revus : DeepSeek V4 Pro a 0,348 / 0,696 $, DeepSeek V4 Flash a 0,0469 / 0,0938 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 23 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Kimi K3, Kimi K2.7 Code, Grok 4.6, GLM-5.3, GLM-5.3 Flash, Haiku 4.5, Gemini 3.8 Flash, GPT-5.4 mini, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
+      },
+      {
+        "date": "2026-09-28",
+        "version": "2.9",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 3 modeles mis a jour et horodates au 28/09/2026. Prix revus : DeepSeek V4 Pro a 0,951432 / 1,902864 $, DeepSeek V4 Flash a 0,08694 / 0,17388 $, GLM-5.3 Flash a 0,15 / 0,5 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 22 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Kimi K3, Kimi K2.7 Code, Grok 4.6, GLM-5.3, Haiku 4.5, Gemini 3.8 Flash, GPT-5.4 mini, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
       }
     ]
   },
@@ -943,8 +949,8 @@
       "editeur": "DeepSeek",
       "slug": "deepseek/deepseek-v4-pro",
       "palier": "intermediaire",
-      "prix_entree": 0.348,
-      "prix_sortie": 0.696,
+      "prix_entree": 0.951432,
+      "prix_sortie": 1.902864,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -956,7 +962,7 @@
       "empreinte": "893 Go FP8, 3,2 To BF16",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-09-27",
+      "verifie_le": "2026-09-28",
       "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ depuis le 16/08/2026. Fenetre heures creuses entre 12H et 3h (heure ete France). Le mode reflexion genere beaucoup de tokens de sortie factures.",
       "scores": {
         "agent-code": 80,
@@ -1267,8 +1273,8 @@
       "editeur": "DeepSeek",
       "slug": "deepseek/deepseek-v4-flash",
       "palier": "economique",
-      "prix_entree": 0.0469,
-      "prix_sortie": 0.0938,
+      "prix_entree": 0.08694,
+      "prix_sortie": 0.17388,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1280,7 +1286,7 @@
       "empreinte": "167 Go FP8",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-09-27",
+      "verifie_le": "2026-09-28",
       "note": "Prix heure creuse chez DeepSeek, double en heure de pointe. Le routage OpenRouter par defaut descend vers 0,05 $ / 0,16 $ chez des hebergeurs tiers dont la quantification n est pas documentee : a tester avant production.",
       "scores": {
         "agent-code": 62,
@@ -1411,8 +1417,8 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3-flash",
       "palier": "micro",
-      "prix_entree": 0.045,
-      "prix_sortie": 0.14,
+      "prix_entree": 0.15,
+      "prix_sortie": 0.5,
       "contexte": 1310720,
       "poids_ouverts": true,
       "europe": false,
@@ -1424,7 +1430,7 @@
       "empreinte": "306 Gio FP8",
       "vitesse": "tres rapide",
       "statut": "actif",
-      "verifie_le": "2026-09-26",
+      "verifie_le": "2026-09-28",
       "note": "Plancher tarifaire du marche avec DeepSeek V4 Flash. La promotion de lancement a 0,075 / 0,25 $ a pris fin le 09/09/2026, les 0,15 / 0,50 $ affiches ici sont le tarif de liste. 1 M de contexte sans palier long contexte, poids MIT, 320 B pour 18 B actifs.",
       "scores": {
         "agent-code": 58,
