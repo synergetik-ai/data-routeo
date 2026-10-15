@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "4.4",
-    "date_verification": "2026-10-13",
+    "version": "4.5",
+    "date_verification": "2026-10-14",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
     "avertissement": "Les scores d adequation sont une notation editoriale 0-100 calibree sur les benchmarks publics cites en bas de page. Ils orientent un premier choix, ils ne remplacent pas un test sur vos propres taches.",
@@ -307,6 +307,12 @@
         "version": "4.4",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 4 modeles mis a jour et horodates au 13/10/2026. Prix revus : Kimi K3 a 0,7 / 15 $, DeepSeek V4 Pro a 0,95526 / 1,91052 $, DeepSeek V4 Flash a 0,091 / 0,182 $, GLM-5.3 Flash a 0,036 / 0,9 $ (entree seule). Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 21 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, GLM-5.3, Haiku 4.5, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
+      },
+      {
+        "date": "2026-10-14",
+        "version": "4.5",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 4 modeles mis a jour et horodates au 14/10/2026. Prix revus : GPT-5.6 Sol a 4 / 20 $, Kimi K3 a 0,45 / 15 $ (entree seule), GLM-5.3 a 0,03 / 4,8 $ (entree seule), GLM-5.3 Flash a 0,15 / 0,5 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 21 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, Haiku 4.5, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
       }
     ]
   },
@@ -499,8 +505,8 @@
       "editeur": "OpenAI",
       "slug": "openai/gpt-5.6-sol",
       "palier": "frontiere",
-      "prix_entree": 2,
-      "prix_sortie": 10,
+      "prix_entree": 4,
+      "prix_sortie": 20,
       "contexte": 1050000,
       "poids_ouverts": false,
       "europe": false,
@@ -512,7 +518,7 @@
       "empreinte": "",
       "vitesse": "moyenne",
       "statut": "promo",
-      "verifie_le": "2026-09-16",
+      "verifie_le": "2026-10-14",
       "note": "Baisse du 21/08/2026, de 5 / 30 a 4 / 20 $. OpenAI garantit ce tarif au moins jusqu au 21/11/2026 : c est un plancher de garantie et non une date d expiration, aucun tarif posterieur n a ete publie. Les endpoints Azure et Bedrock restent plus chers.",
       "scores": {
         "agent-code": 90,
@@ -571,7 +577,7 @@
       "editeur": "Moonshot",
       "slug": "moonshotai/kimi-k3",
       "palier": "frontiere",
-      "prix_entree": 0.7,
+      "prix_entree": 0.45,
       "prix_sortie": 15,
       "contexte": 1048576,
       "poids_ouverts": true,
@@ -584,7 +590,7 @@
       "empreinte": "1,56 To MXFP4, 64 accelerateurs recommandes",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-10-13",
+      "verifie_le": "2026-10-14",
       "note": "Le modele a poids ouverts le plus solide sur les agents a horizon long. Entree en cache a 0,30 $, decisif quand un agent renvoie le meme contexte a chaque tour.",
       "scores": {
         "agent-code": 85,
@@ -859,7 +865,7 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3",
       "palier": "intermediaire",
-      "prix_entree": 0.079,
+      "prix_entree": 0.03,
       "prix_sortie": 4.8,
       "contexte": 1048576,
       "poids_ouverts": true,
@@ -872,7 +878,7 @@
       "empreinte": "756 Go FP8, 8x H200",
       "vitesse": "rapide",
       "statut": "actif",
-      "verifie_le": "2026-10-11",
+      "verifie_le": "2026-10-14",
       "note": "Meilleur poids ouverts sur Terminal-Bench 4.0 (41,8 %). Attention, le flagship n est plus sous MIT mais sous licence GLM-5.3 propre a Z.ai, contrairement a la variante Flash restee MIT.",
       "scores": {
         "agent-code": 82,
@@ -1507,8 +1513,8 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3-flash",
       "palier": "micro",
-      "prix_entree": 0.036,
-      "prix_sortie": 0.9,
+      "prix_entree": 0.15,
+      "prix_sortie": 0.5,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1520,7 +1526,7 @@
       "empreinte": "306 Gio FP8",
       "vitesse": "tres rapide",
       "statut": "actif",
-      "verifie_le": "2026-10-13",
+      "verifie_le": "2026-10-14",
       "note": "Plancher tarifaire du marche avec DeepSeek V4 Flash. La promotion de lancement a 0,075 / 0,25 $ a pris fin le 09/09/2026, les 0,15 / 0,50 $ affiches ici sont le tarif de liste. 1 M de contexte sans palier long contexte, poids MIT, 320 B pour 18 B actifs.",
       "scores": {
         "agent-code": 58,
