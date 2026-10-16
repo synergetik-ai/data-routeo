@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "4.5",
-    "date_verification": "2026-10-14",
+    "version": "4.6",
+    "date_verification": "2026-10-15",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
     "avertissement": "Les scores d adequation sont une notation editoriale 0-100 calibree sur les benchmarks publics cites en bas de page. Ils orientent un premier choix, ils ne remplacent pas un test sur vos propres taches.",
@@ -313,6 +313,12 @@
         "version": "4.5",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 4 modeles mis a jour et horodates au 14/10/2026. Prix revus : GPT-5.6 Sol a 4 / 20 $, Kimi K3 a 0,45 / 15 $ (entree seule), GLM-5.3 a 0,03 / 4,8 $ (entree seule), GLM-5.3 Flash a 0,15 / 0,5 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 21 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, Haiku 4.5, Kimi K2.7 Code, Gemini 3.8 Flash, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
+      },
+      {
+        "date": "2026-10-15",
+        "version": "4.6",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 4 modeles mis a jour et horodates au 15/10/2026. Prix revus : Kimi K3 a 0,304 / 11,936 $, GLM-5.3 a 0,079 / 4,8 $ (entree seule), GLM-5.3 Flash a 0,015 / 0,8 $, Gemini 3.8 Flash a 0,825 / 4,125 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 21 autres : Fable 5.1, GPT-6 Astra, Opus 5, Sonnet 5, GPT-5.6 Sol, GPT-5.5, GPT-5.6 Terra, GPT-5.6 Luna, Grok 4.6, Haiku 4.5, Kimi K2.7 Code, GPT-5.4 mini, DeepSeek V4 Pro, DeepSeek V4 Flash, Qwen3.7 Plus, MiniMax M3, Codestral, Gemini 3.5 Flash-Lite, Gemini 3.1 Flash-Lite, Gemini 2.5 Flash-Lite, Llama 4 Maverick. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
       }
     ]
   },
@@ -577,8 +583,8 @@
       "editeur": "Moonshot",
       "slug": "moonshotai/kimi-k3",
       "palier": "frontiere",
-      "prix_entree": 0.45,
-      "prix_sortie": 15,
+      "prix_entree": 0.304,
+      "prix_sortie": 11.936,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -590,7 +596,7 @@
       "empreinte": "1,56 To MXFP4, 64 accelerateurs recommandes",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-10-14",
+      "verifie_le": "2026-10-15",
       "note": "Le modele a poids ouverts le plus solide sur les agents a horizon long. Entree en cache a 0,30 $, decisif quand un agent renvoie le meme contexte a chaque tour.",
       "scores": {
         "agent-code": 85,
@@ -865,7 +871,7 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3",
       "palier": "intermediaire",
-      "prix_entree": 0.03,
+      "prix_entree": 0.079,
       "prix_sortie": 4.8,
       "contexte": 1048576,
       "poids_ouverts": true,
@@ -878,7 +884,7 @@
       "empreinte": "756 Go FP8, 8x H200",
       "vitesse": "rapide",
       "statut": "actif",
-      "verifie_le": "2026-10-14",
+      "verifie_le": "2026-10-15",
       "note": "Meilleur poids ouverts sur Terminal-Bench 4.0 (41,8 %). Attention, le flagship n est plus sous MIT mais sous licence GLM-5.3 propre a Z.ai, contrairement a la variante Flash restee MIT.",
       "scores": {
         "agent-code": 82,
@@ -973,8 +979,8 @@
       "editeur": "Google",
       "slug": "google/gemini-3.8-flash",
       "palier": "intermediaire",
-      "prix_entree": 0.75,
-      "prix_sortie": 3.75,
+      "prix_entree": 0.825,
+      "prix_sortie": 4.125,
       "contexte": 1048576,
       "poids_ouverts": false,
       "europe": false,
@@ -986,7 +992,7 @@
       "empreinte": "",
       "vitesse": "tres rapide",
       "statut": "promo",
-      "verifie_le": "2026-09-16",
+      "verifie_le": "2026-10-15",
       "note": "Tarif introductif jusqu au 31/12/2026, puis doublement a 1,50 / 7,50 $ le 01/01/2027. Un second bareme a 0,38 / 1,88 $ circule pour Google AI Studio et reste a confirmer sur la page officielle. Grounding Google natif, 1 M de contexte, tres bon sur la vision.",
       "scores": {
         "agent-code": 74,
@@ -1513,8 +1519,8 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3-flash",
       "palier": "micro",
-      "prix_entree": 0.15,
-      "prix_sortie": 0.5,
+      "prix_entree": 0.015,
+      "prix_sortie": 0.8,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1526,7 +1532,7 @@
       "empreinte": "306 Gio FP8",
       "vitesse": "tres rapide",
       "statut": "actif",
-      "verifie_le": "2026-10-14",
+      "verifie_le": "2026-10-15",
       "note": "Plancher tarifaire du marche avec DeepSeek V4 Flash. La promotion de lancement a 0,075 / 0,25 $ a pris fin le 09/09/2026, les 0,15 / 0,50 $ affiches ici sont le tarif de liste. 1 M de contexte sans palier long contexte, poids MIT, 320 B pour 18 B actifs.",
       "scores": {
         "agent-code": 58,
