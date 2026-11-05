@@ -4,7 +4,7 @@ Données de suivi tarifaire des modèles LLM consommées par Routéo
 (`products/routeo/` dans le repo `agent-factory-os`).
 
 Le fichier de données est `modeles.json`, à la racine. Il est rapproché
-quotidiennement des données machine d'OpenRouter par le workflow
+chaque semaine des données machine d'OpenRouter par le workflow
 `.github/workflows/data-sync.yml`, et peut être mis à jour manuellement
 selon la procédure ci-dessous.
 
@@ -17,7 +17,7 @@ conditions, et leurs consignes sont donc distinctes :
 
 | Chemin | Accès web | Consigne | Source de vérité |
 | --- | --- | --- | --- |
-| **Automation** (workflow quotidien) | Non — appel API brut | [`consigne.txt`](consigne.txt) : réconciliation avec l'extrait machine de l'API publique OpenRouter (`/api/v1/models`), fourni par `scripts/sync.mjs` | Tarifs et contextes OpenRouter |
+| **Automation** (workflow hebdomadaire) | Non — appel API brut | [`consigne.txt`](consigne.txt) : réconciliation avec l'extrait machine de l'API publique OpenRouter (`/api/v1/models`), fourni par `scripts/sync.mjs` | Tarifs et contextes OpenRouter |
 | **Manuel** (passe de fond, hebdomadaire conseillée) | Oui — agent avec navigation | Prompt intégré au panneau « Mettre à jour les données » de l'application | Pages tarifaires des éditeurs + recoupement OpenRouter |
 
 > Leçon du 2026-09-15 : un appel `chat/completions` n'a **aucun accès
@@ -52,7 +52,7 @@ conditions, et leurs consignes sont donc distinctes :
 
 ## Cadence
 
-- **Rapprochement machine** : automatique, quotidien (cron 06h00 UTC).
+- **Rapprochement machine** : automatique, hebdomadaire (cron lundi 06h00 UTC).
   Déclenchement manuel : onglet **Actions** → **Mise a jour des donnees**
   → **Run workflow**.
 - **Passe éditoriale** (pages des éditeurs, notes, statuts promo) :
