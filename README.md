@@ -17,7 +17,7 @@ documentaire »). Le protocole de mise à jour, lui, est capitalisé ici.
 | `protocole/mise-a-jour.md` | Règles, deux chemins de mise à jour, cadence, échéances |
 | `scripts/sync.mjs` | Automation : fetch API OpenRouter → réconciliation LLM → validation → écriture → résumé |
 | `scripts/validate.mjs` | Validation de schéma (CLI ou import) |
-| `.github/workflows/data-sync.yml` | Cron quotidien + déclenchement manuel |
+| `.github/workflows/data-sync.yml` | Cron hebdomadaire (lundi) + déclenchement manuel |
 
 ## Consumption par l'application
 
@@ -41,7 +41,7 @@ https://routeo-synergetik.netlify.app.
 2. **Secret** : `LLM_API_KEY` — clé API du fournisseur (OpenRouter ou
    équivalent). *Settings → Secrets and variables → Actions → Secrets.*
 3. **Variables** : `LLM_MODEL` (modèle de réconciliation — actuellement
-   `z-ai/glm-5.3-flash`, modifiable sans toucher au code) et
+   `qwen/qwen3.7-flash` depuis le 2026-11-05, modifiable sans toucher au code) et
    `LLM_BASE_URL` (optionnel, défaut `https://openrouter.ai/api/v1`).
    *Settings → Secrets and variables → Actions → Variables.*
 4. Vérifier que l'onglet **Actions** est actif sur le repo.
@@ -50,7 +50,7 @@ https://routeo-synergetik.netlify.app.
 
 ## Fonctionnement de l'automation
 
-Quotidien à 06h00 UTC :
+Chaque lundi à 06h00 UTC :
 
 1. lecture de `modeles.json` + `protocole/consigne.txt` ;
 2. **fetch de l'API publique OpenRouter** (`/api/v1/models`) et
@@ -96,4 +96,4 @@ nuances : statuts promo, notes, licences, modèles absents d'OpenRouter
 Par défaut, l'automation pousse directement sur `main` après validation.
 Pour exiger une revue humaine, remplacer l'étape « Commit et push » du
 workflow par l'action `peter-evans/create-pull-request` (branche
-quotidienne + PR). Coût : un délai d'un jour avant publication.
+hebdomadaire + PR). Coût : un délai avant publication.

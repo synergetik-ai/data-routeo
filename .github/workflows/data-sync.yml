@@ -2,7 +2,7 @@ name: Mise a jour des donnees
 
 on:
   schedule:
-    - cron: '0 6 * * *' # quotidien, 06h00 UTC (08h00 Paris en heure d'ete)
+    - cron: '0 6 * * 1' # hebdomadaire, lundi 06h00 UTC (08h00 Paris en heure d'ete)
   workflow_dispatch:
 
 permissions:

@@ -1,6 +1,6 @@
-// sync.mjs — rapprochement quotidien des donnees Routéo
+// sync.mjs — rapprochement hebdomadaire des donnees Routéo
 //
-// Execute par le workflow data-sync.yml (cron quotidien ou manuel).
+// Execute par le workflow data-sync.yml (cron hebdomadaire ou manuel).
 // 1. Lit modeles.json + la consigne canonique (protocole/consigne.txt)
 // 2. Fetch l API publique OpenRouter (/api/v1/models) : tarifs et
 //    contextes machine-readable — le modele LLM n a PAS d acces web,
@@ -13,7 +13,7 @@
 //
 // Variables requises :
 //   secret LLM_API_KEY  — cle API (OpenRouter ou equivalent)
-//   var    LLM_MODEL    — identifiant du modele (ex. z-ai/glm-5.3-flash)
+//   var    LLM_MODEL    — identifiant du modele (ex. qwen/qwen3.7-flash)
 //   var    LLM_BASE_URL — optionnel (defaut : https://openrouter.ai/api/v1)
 //   var    OPENROUTER_MODELS_URL — optionnel (defaut : API publique OpenRouter)
 
