@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "6.5",
+    "version": "6.6",
     "date_verification": "2026-11-03",
     "devise": "USD par million de tokens",
     "perimetre": "Deux contextes distincts. Agents internes Synergetik : acces via OpenRouter, tarifs de reference des editeurs, hors frais de rechargement (5,5 % carte, 5 % crypto, 0 % en BYOK sous 25 000 USD par mois). Delivery client : OpenRouter hors schema, acces direct chez l editeur ou poids auto-heberges, les tarifs servent de base de negociation et non de prix final.",
@@ -433,6 +433,12 @@
         "version": "6.5",
         "auteur": "passe de verification",
         "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, aucun modele mis a jour. Prix et fenetres de contexte confirmes sans changement pour les 25 modeles apparies. Verifie le 2026-11-03."
+      },
+      {
+        "date": "2026-11-03",
+        "version": "6.6",
+        "auteur": "passe de verification",
+        "resume": "Rapprochement machine avec l extrait API OpenRouter : 25 correspondances sur 36, 3 modeles mis a jour et horodates au 03/11/2026. Prix revus : DeepSeek V4 Pro a 0,9 / 1,5 $, DeepSeek V4 Flash a 0,09 / 0,18 $, GLM-5.3 Flash a 0,0399 / 0,0784 $. Aucun ecart de contexte detecte, fenetres confirmees pour les 25 modeles apparies. Prix confirmes sans changement pour les 23 autres. Absents de l extrait OpenRouter, laisses inchanges : Gemini 3.1 Pro, Qwen3.8 Max, Magistral Medium, Mistral Medium 3.5, Nemotron 3 Ultra, Mistral Large 3, Devstral 2, Mistral Small 4, Ministral 3 8B, Gemma 4 31B, Nemotron 3 Super. Toujours a instruire : statut promo et note de GPT-5.6 Sol a realigner sur les tarifs courants."
       }
     ]
   },
@@ -1165,8 +1171,8 @@
       "editeur": "DeepSeek",
       "slug": "deepseek/deepseek-v4-pro",
       "palier": "intermediaire",
-      "prix_entree": 1.6,
-      "prix_sortie": 3.2,
+      "prix_entree": 0.9,
+      "prix_sortie": 1.5,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1178,7 +1184,7 @@
       "empreinte": "893 Go FP8, 3,2 To BF16",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-10-30",
+      "verifie_le": "2026-11-03",
       "note": "Prix heure creuse. Tarif plein a 1,32 $ / 3,96 $ depuis le 16/08/2026. Fenetre heures creuses entre 12H et 3h (heure ete France). Le mode reflexion genere beaucoup de tokens de sortie factures.",
       "scores": {
         "agent-code": 80,
@@ -1489,8 +1495,8 @@
       "editeur": "DeepSeek",
       "slug": "deepseek/deepseek-v4-flash",
       "palier": "economique",
-      "prix_entree": 0.091,
-      "prix_sortie": 0.182,
+      "prix_entree": 0.09,
+      "prix_sortie": 0.18,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1502,7 +1508,7 @@
       "empreinte": "167 Go FP8",
       "vitesse": "moyenne",
       "statut": "actif",
-      "verifie_le": "2026-10-27",
+      "verifie_le": "2026-11-03",
       "note": "Prix heure creuse chez DeepSeek, double en heure de pointe. Le routage OpenRouter par defaut descend vers 0,05 $ / 0,16 $ chez des hebergeurs tiers dont la quantification n est pas documentee : a tester avant production.",
       "scores": {
         "agent-code": 62,
@@ -1633,8 +1639,8 @@
       "editeur": "Z.ai",
       "slug": "z-ai/glm-5.3-flash",
       "palier": "micro",
-      "prix_entree": 0.15,
-      "prix_sortie": 0.5,
+      "prix_entree": 0.0399,
+      "prix_sortie": 0.0784,
       "contexte": 1048576,
       "poids_ouverts": true,
       "europe": false,
@@ -1646,7 +1652,7 @@
       "empreinte": "306 Gio FP8",
       "vitesse": "tres rapide",
       "statut": "actif",
-      "verifie_le": "2026-11-02",
+      "verifie_le": "2026-11-03",
       "note": "Plancher tarifaire du marche avec DeepSeek V4 Flash. La promotion de lancement a 0,075 / 0,25 $ a pris fin le 09/09/2026, les 0,15 / 0,50 $ affiches ici sont le tarif de liste. 1 M de contexte sans palier long contexte, poids MIT, 320 B pour 18 B actifs.",
       "scores": {
         "agent-code": 58,
