@@ -58,8 +58,9 @@ Chaque lundi à 06h00 UTC :
    USD par token, contextes) — le modèle LLM n'a pas d'accès web, on
    lui fournit les données source ;
 3. appel LLM (température 0,1) en **mono-tour** : consigne + jeu
-   courant + extrait machine, le modèle réconcilie et renvoie
-   uniquement le JSON ;
+   courant + extrait machine + date du jour fournie par le script ; le
+   modèle réconcilie et renvoie uniquement le JSON. Sur erreur 429 ou 5xx
+   (ou erreur réseau), nouvel essai après 30 s, 1 min, 2 min puis 4 min ;
 4. validation stricte (`scripts/validate.mjs`) : structure, valeurs
    autorisées, prix numériques, champs verrouillés inchangés, aucun
    modèle supprimé, entrée de changelog présente et datée du jour ;
