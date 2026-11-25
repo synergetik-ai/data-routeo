@@ -23,6 +23,16 @@ import { valider, ecarts } from './validate.mjs';
 const FICHIER = 'modeles.json';
 const CONSIGNE = 'protocole/consigne.txt';
 
+// Date du jour, fournie par le script (le modele ne la connaît pas).
+// Fuseau de Paris : c'est la date affichée sur Routéo.
+const AUJOURDHUI = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(new Date());
+
+// Relances sur erreur transitoire (429 = modèle saturé, 5xx) : délais en ms.
+const DELAIS_RELANCE = [30000, 60000, 120000, 240000];
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 const racine = (rel) => new URL('../' + rel, import.meta.url);
 
 function fail(msg) {
@@ -88,6 +98,7 @@ if (!extrait.length) {
 
 // --- 3. Appel LLM (reconciliation, sans web) --------------------------------
 const message = consigne +
+  '\n\nDate du jour (à utiliser pour verifie_le et changelog) : ' + AUJOURDHUI + '.' +
   '\n\n===== JEU DE DONNEES ACTUEL (version ' + actuel.meta.version +
   ', verifie le ' + actuel.meta.date_verification + ') =====\n\n' +
   JSON.stringify(actuel) +
@@ -97,23 +108,39 @@ const message = consigne +
 
 console.log('Appel du modele ' + modele + ' sur ' + baseUrl + ' ...');
 let reponse;
-try {
-  const r = await fetch(baseUrl + '/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + cle,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: modele,
-      temperature: 0.1,
-      messages: [{ role: 'user', content: message }],
-    }),
-  });
-  if (!r.ok) fail('appel API en echec : HTTP ' + r.status + ' — ' + (await r.text()).slice(0, 400));
-  reponse = await r.json();
-} catch (err) {
-  fail('appel API en echec : ' + err.message);
+for (let tentative = 0; ; tentative++) {
+  try {
+    const r = await fetch(baseUrl + '/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + cle,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: modele,
+        temperature: 0.1,
+        messages: [{ role: 'user', content: message }],
+      }),
+    });
+    if (r.ok) {
+      reponse = await r.json();
+      break;
+    }
+    const detail = 'HTTP ' + r.status + ' — ' + (await r.text()).slice(0, 400);
+    const transitoire = r.status === 429 || r.status >= 500;
+    if (!transitoire || tentative >= DELAIS_RELANCE.length) {
+      fail('appel API en echec : ' + detail);
+    }
+    console.warn('Appel en echec (' + detail + '), nouvel essai dans ' +
+      DELAIS_RELANCE[tentative] / 1000 + ' s ...');
+    await sleep(DELAIS_RELANCE[tentative]);
+  } catch (err) {
+    // Erreur réseau (fetch rejeté) : relance dans la limite des délais prévus.
+    if (tentative >= DELAIS_RELANCE.length) fail('appel API en echec : ' + err.message);
+    console.warn('Erreur réseau (' + err.message + '), nouvel essai dans ' +
+      DELAIS_RELANCE[tentative] / 1000 + ' s ...');
+    await sleep(DELAIS_RELANCE[tentative]);
+  }
 }
 
 const brut = reponse?.choices?.[0]?.message?.content;
@@ -132,6 +159,9 @@ try {
   fail('la reponse du modele n est pas du JSON valide : ' + err.message +
     '\n--- debut de reponse ---\n' + brut.slice(0, 600));
 }
+
+// Dates écrites par le script, pas par le modèle : il ne connaît pas le jour.
+fixerDates(candidat, actuel);
 
 const { erreurs, avertissements } = validerAvecGardes(candidat, actuel);
 const ecartsListe = ecarts(actuel, candidat);
@@ -170,6 +200,38 @@ resume(sortie);
 console.log('SYNC OK — version ' + candidat.meta.version + ' écrite.');
 
 // --- gardes anti-hallucination (import tardif pour lisibilite) --------------
+/**
+ * Fixe les dates du jeu candidat, sans jamais les laisser au modèle :
+ * - meta.date_verification = date du jour ;
+ * - meta.changelog : toute entrée ajoutée par le modèle, ou à défaut une
+ *   entrée de passage, porte la date du jour ;
+ * - verifie_le = date du jour pour chaque modèle dont le prix, le contexte
+ *   ou le statut change ; les autres reprennent leur date d'origine.
+ */
+function fixerDates(candidat, actuel) {
+  candidat.meta.date_verification = AUJOURDHUI;
+  const log = candidat.meta.changelog || [];
+  const nAvant = (actuel.meta.changelog || []).length;
+  for (let i = nAvant; i < log.length; i++) log[i].date = AUJOURDHUI;
+  if (log.length === nAvant) {
+    log.push({
+      date: AUJOURDHUI,
+      resume: 'Rapprochement automatique hebdomadaire des données OpenRouter (aucun ajout au changelog par le modèle).',
+    });
+  }
+  candidat.meta.changelog = log;
+
+  const avant = new Map(actuel.modeles.map((m) => [m.id, m]));
+  candidat.modeles.forEach((m) => {
+    const a = avant.get(m.id);
+    if (!a) return;
+    const change = ['prix_entree', 'prix_sortie', 'contexte', 'statut'].some(
+      (k) => String(a[k]) !== String(m[k]),
+    );
+    m.verifie_le = change ? AUJOURDHUI : a.verifie_le;
+  });
+}
+
 function validerAvecGardes(candidat, actuel) {
   const base = valider(candidat, actuel);
   // Variation de prix forte : legitimement possible (marche volatil) mais

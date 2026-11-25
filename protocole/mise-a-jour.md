@@ -42,6 +42,13 @@ conditions, et leurs consignes sont donc distinctes :
   est géré par l'interface de l'application.
 - Ajouter une entrée dans `meta.changelog` à chaque passage, même si rien
   n'a changé : elle date la dernière vérification.
+- **Les dates sont écrites par le script, jamais par le modèle** (il ne
+  connaît pas le jour) : `meta.date_verification` et les entrées de
+  changelog ajoutées au passage portent la date du jour (fuseau de Paris) ;
+  `verifie_le` prend la date du jour pour chaque modèle dont le prix, le
+  contexte ou le statut change, et reprend sa date d'origine sinon.
+  Sans changement de prix, la mention « Vérifié le » du site avance quand
+  même : elle indique le dernier passage réussi.
 - Les champs de dimensionnement (`params_*`, `classe_materiel`,
   `empreinte`) ne se modifient que sur la foi du model card de l'éditeur
   ou d'un guide de déploiement daté.
